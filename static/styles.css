@@ -1,0 +1,116 @@
+/* static/styles.css */
+
+html,
+body {
+  height: 100%;
+  margin: 0; /* Remove default margin */
+  font-family: 'Arial', sans-serif; /* Set a clean font */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  background-color: #f8f9fa; /* Light gray background for a softer look */
+}
+
+.container {
+  text-align: center; /* Center text inside the container */
+  margin: 20px; /* Add margin around the container */
+  padding: 20px; /* Add padding inside the container */
+  background-color: white; /* White background for the container */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h1 {
+  color: #343a40;
+  margin-bottom: 20px; /* Space below the heading */
+  font-size: 2.5em; /* Larger heading */
+  text-transform: uppercase; /* Uppercase letters for emphasis */
+}
+
+table {
+  width: 100%; /* Full width of the container */
+  margin-top: 20px; /* Space above the table */
+  border-collapse: collapse; /* Remove spacing between cells */
+}
+
+th, td {
+  padding: 12px; /* Padding inside cells */
+  text-align: left; /* Align text to the left */
+  border: 1px solid #dee2e6; /* Light border around cells */
+}
+
+th {
+  background-color: #343a40; /* Dark background for headers */
+  color: white; /* White text for headers */
+  font-weight: bold; /* Bold font for headers */
+}
+
+.btn-primary {
+  margin-top: 10px;
+  background-color: #007bff; /* Bootstrap primary color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding for buttons */
+  border-radius: 5px; /* Rounded corners for buttons */
+  color: white; /* White text */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-secondary {
+  margin-top: 10px;
+  background-color: #6c757d; /* Bootstrap secondary color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding for buttons */
+  border-radius: 5px; /* Rounded corners for buttons */
+  color: white; /* White text */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+}
+
+.transparent-image {
+  max-width: 100%; /* Responsive */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove inline spacing */
+  margin: 0 auto; /* Center the image if needed */
+  border-radius: 5px; /* Slightly rounded corners for images */
+}
+
+footer {
+  background-color: #ffffff; /* Dark background for footer */
+  color: #000000; /* Ensure text is white for contrast */
+  text-align: center;
+  padding: 15px 0; /* Padding for the footer */
+  position: relative; /* Positioning the footer */
+  width: 100%; /* Full width */
+  bottom: 0; /* Align footer to bottom */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow for depth */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em; /* Smaller heading on mobile */
+  }
+
+  .container {
+    padding: 10px; /* Less padding on mobile */
+  }
+
+  th, td {
+    padding: 10px; /* Less padding for smaller screens */
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 8px 16px; /* Smaller buttons on mobile */
+  }
+}

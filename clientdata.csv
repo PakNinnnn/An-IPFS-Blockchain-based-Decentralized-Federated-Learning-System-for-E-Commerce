@@ -1,0 +1,11 @@
+user_id,event_time,event_type,product_id,category_id,category_code,brand,price,user_session
+5,2024-11-01 05:05:47 UTC,view,3,15,electronics,Apple,450,129
+5,2024-11-01 05:05:47 UTC,add_to_cart,3,15,electronics,Samsung,450,129
+10,2024-11-01 05:10:12 UTC,view,4,8,clothing,Nike,75,128
+7,2024-11-01 05:15:21 UTC,purchase,5,9,footwear,Adidas,250,130
+7,2024-11-01 05:15:21 UTC,view,5,9,footwear,Puma,250,130
+3,2024-11-01 05:20:33 UTC,view,6,12,accessories,Ray-Ban,150,128
+3,2024-11-01 05:20:33 UTC,purchase,6,12,accessories,Ray-Ban,150,128
+10,2024-11-01 05:25:45 UTC,view,7,7,home_appliances,LG,300,128
+2,2024-11-01 05:30:10 UTC,view,8,5,beauty,Sephora,400,131
+2,2024-11-01 05:30:10 UTC,purchase,8,5,beauty,Clinique,400,131

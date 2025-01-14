@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recommendations</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <style>
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+      .featured-items {
+        text-align: center;
+        margin: 40px 0;
+      }
+      .item-container {
+        margin-bottom: 20px; /* Space between items */
+        border: 1px solid #ccc; /* Optional border */
+        border-radius: 8px; /* Rounded corners */
+        padding: 10px; /* Padding inside item */
+        transition: transform 0.2s; /* Smooth scaling */
+      }
+      .item-container:hover {
+        transform: scale(1.05); /* Slightly enlarge on hover */
+      }
+      .item-image {
+        max-width: 100%; /* Responsive image */
+        height: auto; /* Maintain aspect ratio */
+      }
+      .button-container {
+        margin-top: 30px; /* Space above the buttons */
+      }
+      .user-id {
+        text-align: right; /* Right align the user ID */
+        font-weight: bold; /* Make it bold */
+      }
+      footer {
+        background-color: #343a40; /* Dark background for footer */
+        color: white;
+        text-align: center;
+        padding: 15px 0; /* Padding for the footer */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="mt-5">Today's Recommended Products</h1>
+        <div class="user-id">Welcome, Shop {{ session['user_id'] }}</div>
+      </div>
+
+      <div class="featured-items">
+        <div class="row" id="items-container">
+          {% if selected_items %} {% for item in selected_items %}
+          <div class="col-md-4">
+            <div class="item-container">
+              <img
+                src="{{ url_for('static', filename='images/' + item.image) }}"
+                alt="{{ item.description }}"
+                class="item-image transparent-image"
+              />
+              <p class="mt-3">{{ item.description }}</p>
+            </div>
+          </div>
+          {% endfor %} {% else %}
+          <p>No recommendations available at this time.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="text-center button-container">
+        <form
+          method="post"
+          action="{{ url_for('get_recommendations') }}"
+          
+          style="display: inline"
+        >
+          <button type="submit" class="btn btn-secondary">Regenerate</button>
+        </form>
+        <a
+          href="{{ url_for('contribute') }}"
+          class="btn btn-secondary"
+          style="margin-left: 10px"
+          >CONTRIBUTE</a
+        >
+        <a
+          href="{{ url_for('personal') }}"
+          class="btn btn-secondary"
+          style="margin-left: 10px"
+          >BACK TO PERSONAL</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

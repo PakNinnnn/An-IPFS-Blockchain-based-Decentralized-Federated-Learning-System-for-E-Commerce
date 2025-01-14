@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contribute</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script>
+        function addRow() {
+            const table = document.getElementById("contributionTable");
+            const newRow = table.insertRow();
+
+            const userIdCell = newRow.insertCell(0);
+            const eventTimeCell = newRow.insertCell(1);
+            const eventTypeCell = newRow.insertCell(2);
+            const productIdCell = newRow.insertCell(3);
+            const categoryIdCell = newRow.insertCell(4);
+            const categoryCodeCell = newRow.insertCell(5);
+            const brandCell = newRow.insertCell(6);
+            const priceCell = newRow.insertCell(7);
+            const userSessionCell = newRow.insertCell(8);
+            const removeCell = newRow.insertCell(9); // Cell for the remove button
+
+            userIdCell.innerHTML = `<input type="text" class="form-control" name="user_id[]" placeholder="Enter your User ID" required />`;
+            eventTimeCell.innerHTML = `<input type="text" class="form-control" name="event_time[]" placeholder="YYYY-MM-DD HH:MM:SS UTC" required />`;
+            eventTypeCell.innerHTML = `
+            <select class="form-control" name="event_type[]" required>
+                <option value="">Select event type</option>
+                <option value="view">View</option>
+                <option value="cart">Cart</option>
+                <option value="purchase">Purchase</option>
+            </select>`;
+            productIdCell.innerHTML = `<input type="text" class="form-control" name="product_id[]" placeholder="Enter product ID" required />`;
+            categoryIdCell.innerHTML = `<input type="text" class="form-control" name="category_id[]" placeholder="Enter category ID" required />`;
+            categoryCodeCell.innerHTML = `<input type="text" class="form-control" name="category_code[]" placeholder="Enter category code" required />`;
+            brandCell.innerHTML = `<input type="text" class="form-control" name="brand[]" placeholder="Enter brand" required />`;
+            priceCell.innerHTML = `<input type="number" class="form-control" name="price[]" step="0.01" placeholder="Enter price" required />`;
+            userSessionCell.innerHTML = `<input type="text" class="form-control" name="user_session[]" placeholder="Enter user session ID" required />`;
+            removeCell.innerHTML = `<button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button>`;
+        }
+
+        function removeRow(button) {
+            const row = button.parentNode.parentNode; // Get the row that contains the button
+            row.parentNode.removeChild(row); // Remove the row from the table
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Items Contributions</h1>
+        <form method="POST" action="{{ url_for('submit_contribution') }}">
+            <div class="table-responsive">
+                <table class="table table-striped mt-3" id="contributionTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">User ID</th>
+                            <th scope="col">Event Time</th>
+                            <th scope="col">Event Type</th>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Category ID</th>
+                            <th scope="col">Category Code</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">User Session</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in client_data %}
+                        <tr>
+                            <td><input type="text" class="form-control" name="user_id[]" value="{{ data.user_id }}" required /></td>
+                            <td><input type="text" class="form-control" name="event_time[]" value="{{ data.event_time }}" required /></td>
+                            <td>
+                                <select class="form-control" name="event_type[]" required>
+                                    <option value="">Select event type</option>
+                                    <option value="view" {% if data.event_type == 'view' %}selected{% endif %}>View</option>
+                                    <option value="cart" {% if data.event_type == 'cart' %}selected{% endif %}>Cart</option>
+                                    <option value="purchase" {% if data.event_type == 'purchase' %}selected{% endif %}>Purchase</option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="form-control" name="product_id[]" value="{{ data.product_id }}" required /></td>
+                            <td><input type="text" class="form-control" name="category_id[]" value="{{ data.category_id }}" required /></td>
+                            <td><input type="text" class="form-control" name="category_code[]" value="{{ data.category_code }}" required /></td>
+                            <td><input type="text" class="form-control" name="brand[]" value="{{ data.brand }}" required /></td>
+                            <td><input type="number" class="form-control" name="price[]" value="{{ data.price }}" step="0.01" required /></td>
+                            <td><input type="text" class="form-control" name="user_session[]" value="{{ data.user_session }}" required /></td>
+                            <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">Remove</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="button" class="btn btn-secondary" onclick="addRow()">Add Another Item</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <a href="{{ url_for('personal') }}" class="btn btn-secondary mt-4">Back to Personal</a>
+    </div>
+</body>
+</html>
