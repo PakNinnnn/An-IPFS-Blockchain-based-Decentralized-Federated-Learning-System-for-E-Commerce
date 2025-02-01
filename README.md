@@ -153,8 +153,6 @@ The `ml_model` folder stores the trained model in `.pth` and the corresponding d
 
 ## [Recommendation System Model](lambda/model-contribute.py)
 * We used the “eCommerce behavior data from multi category store” dataset, an open source dataset containing a total of about 285,000,000 rows and 9 columns
-* However, due to the lack of training resources, we will only use around 30,000 data points. 
-We simulate the usage of multiple clients by separating the 30,000 data points into 3 batches of 10,000 data points, spread across 3 clients.
 * The model is a simple Stochastic Gradient Descent, with inputs consisting of a User to Product matrix (mapped for each User and Product Pair) and a label Tensor based on the action of the user toward a specific product. 
 * We used a collaborative filtering system for the users and items as collaborative filtering doesn’t require feature information of users and items besides the user-item interaction data. This ultimately matches our use case. To do that, we have to learn the matrix factorization of the User to Product matrix to represent each of the products and users by 20-dimensional vectors in default. 
 
