@@ -78,10 +78,6 @@ The `ml_model` folder stores the trained model in `.pth` and the corresponding d
 ## [Blockchain Handler](lambda/blockchain-storage.py)
 * A lambda handler for uploading and retrieveing hash to and from ETH smart contract
 * Digital wallet hard-coded in the function
-    > **Note I :** Please **DO NOT** disclose or steal my wallets! It's definitely not a NO to expose the private key of wallet to public but given the TAs may try out the system, I still included here.
-    
-    > **Note II :** Although the cryptocurrency used here is Sepolia ETH, which is basically *fake* ETH, still, please **DO NOT** spam and use all of it.
-
 * Sample hash reading via HTTP POST in python
     ```
     url = "https://r3h9ia9po3.execute-api.us-east-1.amazonaws.com/default/blockchain-storage"
