@@ -3,21 +3,15 @@ from web3 import Web3
 from web3.gas_strategies.rpc import rpc_gas_price_strategy 
 
 # Add the Web3 Provider
-RPC_PROVIDER_APIKEY  = "438da484051744a0bfc3cf924110bdc1"
-RPC_PROVIDER_URL = "https://sepolia.infura.io/v3/438da484051744a0bfc3cf924110bdc1"
+RPC_PROVIDER_APIKEY  = ""
+RPC_PROVIDER_URL = ""
 
 #To be replaced by client input
-ACCOUNT = "0x79b12BcAF4F9Bf43dc7B2D370Da95C2668303A2E"
-ACCOUNT_PRIVATE_KEY = "172e6450b8be0e8d15c235eefc9fda04ac803816ffaaae1cf05d59092a3f6e8e" 
+ACCOUNT = ""
+ACCOUNT_PRIVATE_KEY = "" 
 ACCOUNT_LIST = [
-                    "0x79b12BcAF4F9Bf43dc7B2D370Da95C2668303A2E", 
-                    "0x64bf668Aa38d4892CC0041340ED4D7C3FA2238e7", 
-                    "0x5b162FB15dF23bf390eE49e4F223779c0e3587aC"
                 ]
 ACCOUNT_PKEY_LIST = [
-                        "172e6450b8be0e8d15c235eefc9fda04ac803816ffaaae1cf05d59092a3f6e8e", 
-                        "c6c5abb90237ef79fb7a5d88b6334a0a09b050608df78cb037b5714ccae7fc65", 
-                        "c49687851e2a9c6254b1095ed375fc795843b939817a19a43699275996341553"
                     ]
 
 web3Handler = Web3(Web3.HTTPProvider(RPC_PROVIDER_URL))
